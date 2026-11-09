@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Violet Transit</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <aside class="sidebar">
+        <div class="brand-box">
+          <div class="brand-icon">VT</div>
+          <div>
+            <p class="brand-subtitle">Campus Mobility</p>
+            <h2>Violet Transit</h2>
+          </div>
+        </div>
+
+        <nav class="side-nav">
+          <a href="#overview" class="nav-link active">Overview</a>
+          <a href="#routes" class="nav-link">Routes</a>
+          <a href="#schedule" class="nav-link">Schedule</a>
+          <a href="#requests" class="nav-link">Requests</a>
+          <a href="#alerts" class="nav-link">Alerts</a>
+          <a href="#support" class="nav-link">Support</a>
+        </nav>
+
+        <div class="mini-panel">
+          <p>Today</p>
+          <strong>08 buses active</strong>
+          <span>4 routes in motion</span>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">College Transport Information System</p>
+            <h1>Smart Campus Mobility</h1>
+          </div>
+          <button class="primary-btn">New Request</button>
+        </header>
+
+        <section class="hero-panel" id="overview">
+          <div class="hero-copy">
+            <span class="tag">Live Tracking</span>
+            <h2>Reliable transport for every campus trip</h2>
+            <p>
+              Track available buses, monitor timings, review pickup points, and request transport with just a few clicks.
+            </p>
+            <div class="hero-actions">
+              <a href="#routes" class="primary-btn">Explore Routes</a>
+              <a href="#requests" class="secondary-btn">Book Transport</a>
+            </div>
+          </div>
+
+          <div class="hero-card">
+            <div class="hero-card-header">
+              <span>Next Departure</span>
+              <span class="status-pill live">Live</span>
+            </div>
+            <div class="hero-trip">
+              <div>
+                <p>Route</p>
+                <h3>North Loop</h3>
+              </div>
+              <div class="hero-time">08:15 AM</div>
+            </div>
+            <div class="hero-meta">
+              <div>
+                <span>Pickup</span>
+                <strong>Main Gate</strong>
+              </div>
+              <div>
+                <span>Driver</span>
+                <strong>Mr. Anand</strong>
+              </div>
+              <div>
+                <span>Seats</span>
+                <strong>12 / 20</strong>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="stats-grid" id="statsGrid"></section>
+
+        <section class="content-panel" id="routes">
+          <div class="section-title-row">
+            <div>
+              <p class="section-tag">Routes</p>
+              <h2>Available buses</h2>
+            </div>
+          </div>
+
+          <div class="filters">
+            <label class="search-box">
+              Search
+              <input type="search" id="searchInput" placeholder="Search route, bus, pickup..." />
+            </label>
+            <label>
+              Route
+              <select id="routeFilter">
+                <option value="all">All routes</option>
+              </select>
+            </label>
+            <label>
+              Time
+              <select id="timeFilter">
+                <option value="all">All times</option>
+                <option value="morning">Morning</option>
+                <option value="afternoon">Afternoon</option>
+                <option value="evening">Evening</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="route-grid" id="routeCards"></div>
+        </section>
+
+        <section class="content-panel split-panel" id="schedule">
+          <div class="section-title-row">
+            <div>
+              <p class="section-tag">Schedule</p>
+              <h2>Pickup and account timings</h2>
+            </div>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Route</th>
+                  <th>Bus</th>
+                  <th>Pickup</th>
+                  <th>Departure</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="scheduleTable"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="module-grid">
+          <div class="content-panel" id="requests">
+            <div class="section-title-row">
+              <div>
+                <p class="section-tag">Requests</p>
+                <h2>Transport request</h2>
+              </div>
+            </div>
+
+            <form id="transportForm" class="transport-form">
+              <div class="field-row">
+                <label>
+                  Full name
+                  <input type="text" id="name" placeholder="Enter your name" required />
+                </label>
+                <label>
+                  Student ID
+                  <input type="text" id="idNumber" placeholder="e.g. CS2024-112" required />
+                </label>
+              </div>
+
+              <div class="field-row">
+                <label>
+                  Department
+                  <input type="text" id="department" placeholder="Department name" required />
+                </label>
+                <label>
+                  Preferred route
+                  <select id="routeSelect" required>
+                    <option value="">Select route</option>
+                  </select>
+                </label>
+              </div>
+
+              <label>
+                Pickup point
+                <input type="text" id="pickupPoint" placeholder="Main Gate / Hostel A / City Center" required />
+              </label>
+
+              <button type="submit" class="primary-btn submit-btn">Submit Request</button>
+            </form>
+          </div>
+
+          <div class="content-panel" id="alerts">
+            <div class="section-title-row">
+              <div>
+                <p class="section-tag">Alerts</p>
+                <h2>Important notices</h2>
+              </div>
+            </div>
+            <ul class="alert-list" id="alertsList"></ul>
+          </div>
+        </section>
+
+        <section class="content-panel support-panel" id="support">
+          <div class="section-title-row">
+            <div>
+              <p class="section-tag">Support</p>
+              <h2>Transport support center</h2>
+            </div>
+          </div>
+
+          <div class="support-grid">
+            <div class="support-item">
+              <span class="support-label">Phone</span>
+              <strong>+91 98765 43210</strong>
+            </div>
+            <div class="support-item">
+              <span class="support-label">Email</span>
+              <strong>transport@college.edu</strong>
+            </div>
+            <div class="support-item">
+              <span class="support-label">Office Hours</span>
+              <strong>8:00 AM - 6:00 PM</strong>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div id="toast" class="toast" aria-live="polite"></div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
